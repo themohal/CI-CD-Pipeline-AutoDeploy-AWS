@@ -16,7 +16,7 @@ node {
         echo "Deploying application"
 
         sh """
-        mkdir -p ${appDir}
+        sudo mkdir -p ${appDir}
         sudo chown -R jenkins:jenkins ${appDir}
 
         rsync -av --delete \
@@ -25,8 +25,8 @@ node {
         ./ ${appDir}
 
         cd ${appDir}
-        npm install
-        npm run build
+        sudonpm install
+        sudo npm run build
 
         # Kill existing process on port 3000
         sudo fuser -k 3000/tcp || true
