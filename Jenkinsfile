@@ -25,7 +25,7 @@ node {
         ./ ${appDir}
 
         cd ${appDir}
-        sudonpm install
+        sudo npm install
         sudo npm run build
 
         # Kill existing process on port 3000
