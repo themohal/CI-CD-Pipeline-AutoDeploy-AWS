@@ -27,12 +27,8 @@ node {
         cd ${appDir}
         sudo npm install
         sudo npm run build
-
-        # Kill existing process on port 3000
-        sudo fuser -k 3000/tcp || true
-
-        # Start app in background
-        nohup npm start > app.log 2>&1 &
+        sudo fuser -k 3000/tcp
+        sudo npm start &
         """
     }
 }
