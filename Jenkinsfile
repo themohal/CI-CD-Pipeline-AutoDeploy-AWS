@@ -23,7 +23,7 @@ node {
         --exclude='.git' \
         --exclude='node_modules' \
         ./ ${appDir}
-
+        sudo apt install -y nodejs npm
         cd ${appDir}
         sudo npm install
         sudo npm run build
