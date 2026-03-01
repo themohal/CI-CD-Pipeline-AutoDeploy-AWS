@@ -27,8 +27,8 @@ node {
         cd ${appDir}
         sudo npm install
         sudo npm run build
-        sudo fuser -k 3000/tcp
-        sudo npm startW
+        sudo fuser -k 3000/tcp || true
+        sudo npm start
         """
     }
 }
