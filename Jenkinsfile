@@ -23,13 +23,16 @@ node {
             rsync -av --delete --exclude='.git' --exclude='node_modules' ./ ${appDir}
 
             cd ${appDir}
-            # Install pm2 globally (if not already installed)
-            sudo npm install -g pm2
+            # Install app dependencies
+            sudo npm install
+
+            # Build the app
+            sudo npm run build
 
             # Delete old pm2 process if exists
             pm2 delete next-app || true
 
-            # Start the Next.js app using pm2 (ensures single instance is running)
+            # Start the Next.js app using pm2
             pm2 start npm --name "next-app" -- start
 
             # Save pm2 process list (for auto-restart)
